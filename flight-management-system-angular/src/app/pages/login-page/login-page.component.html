@@ -1,0 +1,78 @@
+<div class="loader-container" *ngIf="displayModal">
+  <div class="spinner-border text-light" style="width: 3rem; height: 3rem" role="status"></div>
+  <h3 style="margin-top: 10px; color: white">Loading</h3>
+</div>
+
+<div class="All" style="
+    background-size: cover;
+    padding-top: 5em;
+    padding-bottom: 5em;
+  ">
+  <div style="
+      width: 60%;
+      margin: auto;
+      background: rgb(246, 246, 246);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0px 0px 10px #333;
+    ">
+    <p style="
+        font-weight: bold;
+        font-size: 28px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: bolder;
+        padding-top: 30px;
+        padding-bottom: 30px;
+      ">
+      LOGIN
+    </p>
+
+    <p></p>
+
+    <form action="/action_page.php" method="post" style="border-width: 0ch">
+      <div class="container" style="text-align: center; color:#47143D;">
+        <form (submit)="handleFormSubmit($event)" ngNativeValidate style="border-width: 0ch; margin: auto">
+          <div style="text-align: left">
+            <label for="email" style="font-weight: bolder"><b> Email</b></label>
+            <input type="text" placeholder="Enter Email" name="uname" [(ngModel)]="email" required />
+          </div>
+
+          <br />
+          <div style="text-align: left">
+            <h3>
+              <label for="psw1" style="font-weight: bolder"><b>PASSWORD</b></label>
+            </h3>
+            <input [type]="show ? 'text' : 'password'" placeholder="Enter Password" name="psw1" [(ngModel)]="password" required />
+            <span class="password-toggle-icon" (click)="onEyeClick()">
+              <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+              <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i></span>
+          
+          </div>
+          
+          <br />
+
+          <button type="submit" style="
+              margin-bottom: 20px;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+              border-radius: 12px;
+              background-color: rgb(249, 192, 86);
+              color: black;
+            ">
+            LOGIN
+          </button>
+
+          <button type="reset" style="
+              background-color: crimson;
+              margin-left: 10px;
+              margin-bottom: 20px;
+              font-weight: bolder;
+              border-radius: 12px;
+            ">
+            CANCEL
+          </button>
+        </form>
+      </div>
+    </form>
+  </div>
+</div>

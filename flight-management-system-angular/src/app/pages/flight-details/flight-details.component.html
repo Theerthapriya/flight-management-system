@@ -1,0 +1,88 @@
+<div class="loader-container" *ngIf="false">
+  <div class="spinner-border text-light" style="width: 3rem; height: 3rem" role="status"></div>
+  <h3 style="margin-top: 10px; color: white">Loading</h3>
+</div>
+
+<div class="All container">
+  <p style="
+      font-weight: bold;
+      text-align: left;
+      margin-bottom: 30px;
+      font-size: 22px;
+      color: black;
+    ">
+    <br>
+    FLIGHT DETAILS: ORIGIN = {{selectedFlight[0].origin}} DESTINATION = {{selectedFlight[0].destination}} FLIGHT DATE =
+    {{selectedFlight[0].depDate}} Seats Available = {{selectedFlight[0].available}}
+  </p>
+  <div class="row">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-6">
+          <h1>Passenger Details</h1>
+        </div>
+      </div>
+      <form (submit)="onSaveBooking($event)" ngNativeValidate>
+        <div class="row pt-2">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Fare</th>
+                <th>Seat No</th>
+              </tr>
+              <tbody>
+                <tr *ngFor="let pax of paxList;let index= index">
+                  <td>
+                    <input type="text" class="form-control" name="firstName-{{index}}" [(ngModel)]="pax.firstName"
+                      placeholder="First Name" required>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" name="lastName-{{index}}" [(ngModel)]="pax.lastName"
+                      placeholder="Last Name" required>
+                  </td>
+                  <td>
+                    <input style="width: 100px;" type="number" min="1" max="99" class="form-control" name="age-{{index}}" [(ngModel)]="pax.age"
+                      placeholder="Age" required>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" name="fare-{{index}}" [(ngModel)]="pax.fare" disabled="true"
+                      placeholder="Fare" required>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" name="seat-{{index}}" [(ngModel)]="pax.seat" disabled="true"
+                      placeholder="Seat" required>
+                  </td>
+                  <td>
+                    <button class="btn btn-success" type="button" (click)="selectSeat(index)">Select Seat</button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-success" (click)="addPax()">Add Passengers</button>
+                  </td>
+                  <td>
+                    <button class="btn btn-success" type="button" (click)="removeGuest(index)">Remove</button>
+                  </td>
+                </tr>
+
+              </tbody>
+
+
+            </table>
+          </div>
+        </div>
+        <div class="row pt-3">
+          <div class="col-8 text-center">
+            <button class="btn btn-success">Create New Booking</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+<br>
+<br>
+<br>
+<br>

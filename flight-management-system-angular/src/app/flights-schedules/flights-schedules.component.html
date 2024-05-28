@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="mt-4 mb-4">
+    <h3><b> Flight Details</b></h3>
+    <div *ngIf="flights.length === 0">
+      <h3>No Flights Found</h3>
+    </div>
+    <div *ngIf="flights.length > 0" class="row g-4">
+      <div class="col-12 col-sm-6 col-md-4" *ngFor="let flight of flights">
+        <div class="card m-3" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
+          <!-- <img class="card-img-top" [src]="flight.imgSrc" alt="Card image cap" /> -->
+          <div class="card-body">
+            <h4 class="card-title font-weight-bold">{{ flight.flightNo }}</h4>
+            <div class="card-text">
+              <h6 style="
+                    padding: 15px 10px;
+                    box-shadow: '0px 0px 7px #ccc';
+                    margin-top: 20px;
+                    border-radius: 5px;
+                  ">
+                Source:
+                <span style="font-weight: 400">{{ flight.origin }}</span>
+              </h6>
+              <h6 style="
+                    padding: 15px 10px;
+                    box-shadow: '0px 0px 7px #ccc';
+                    margin-top: 15px;
+                    border-radius: 5px;
+                  ">
+                Destination:
+                <span style="font-weight: 400">{{
+                  flight.destination
+                  }}</span>
+              </h6>
+              <h6 style="
+                    padding: 15px 10px;
+                    box-shadow: '0px 0px 7px #ccc';
+                    margin-top: 15px;
+                    border-radius: 5px;
+                  ">
+                Departure Date:
+                <span style="font-weight: 400">{{ flight.depDate }}</span>
+              </h6>
+              <h6 style="
+                    padding: 15px 10px;
+                    box-shadow: '0px 0px 7px #ccc';
+                    margin-top: 15px;
+                    border-radius: 5px;
+                  ">
+                Departure Time:
+                <span style="font-weight: 400">{{ flight.depTime }}</span>
+              </h6>
+              <h6 style="
+                    padding: 15px 10px;
+                    box-shadow: '0px 0px 7px #ccc';
+                    margin-top: 15px;
+                    border-radius: 5px;
+                  ">
+                Status:
+                <span style="font-weight: 400">{{ flight.status }}</span>
+              </h6>
+              <h6 style="
+                  padding: 15px 10px;
+                  box-shadow: '0px 0px 7px #ccc';
+                  margin-top: 15px;
+                  border-radius: 5px;
+                ">
+                Total Seats:
+                <span style="font-weight: 400">60</span>
+              </h6>
+              <h6 style="
+                  padding: 15px 10px;
+                  box-shadow: '0px 0px 7px #ccc';
+                  margin-top: 15px;
+                  border-radius: 5px;
+                ">
+                Total Remaining Seats:
+                <span style="font-weight: 400">{{ flight.available }}</span>
+              </h6>
+              <h6 style="
+                  padding: 15px 10px;
+                  box-shadow: '0px 0px 7px #ccc';
+                  margin-top: 15px;
+                  border-radius: 5px;
+                ">
+                Tickets Cost:
+                <span style="font-weight: 400">{{ flight.totalAmount }}</span>
+              </h6>
+            </div>
+
+            <div class="btn-group" style="display: flex; 
+            justify-content: space-between;">
+              <button class="btn btn-primary" style="
+              background-color: rgb(249, 192, 86);" [disabled]="(flight.available===60)" (click)="viewBookings(flight)">
+                View Bookings
+              </button>
+              <button class="btn btn-primary" style="
+              background-color: crimson;" [disabled]="!(flight.status==='Scheduled')" (click)="cancelFlight(flight)">
+                Cancel Flight
+              </button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,170 @@
+<div class="loader-container" *ngIf="displayModal">
+  <div
+    class="spinner-border text-light"
+    style="width: 3rem; height: 3rem"
+    role="status"
+  ></div>
+  <h3 style="margin-top: 10px; color: white">Loading</h3>
+</div>
+
+<div class="All container">
+  <p
+    style="
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 22px;
+      color: black;
+    "
+  >
+    ENTER FLIGHT DETAILS
+  </p>
+
+  <form (submit)="handleFormSubmit($event)" ngNativeValidate>
+    <div class="row">
+      <div
+        class="card mt-4"
+        style="
+          width: 100%;
+          box-shadow: '0px 0px 7px #ccc';
+          background-color: white;
+        "
+      >
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">General Details</h4>
+          <div>
+            <label
+              for="Fclass"
+              style="font-size: 18px; font-weight: bold; color: black"
+              >Flight Name</label
+            >
+            <input
+              type="text"
+              id="Fclass"
+              name="flightClass"
+              placeholder="Enter Flight Name"
+              [(ngModel)]="flightNo"
+              required
+              maxlength="6"
+            />
+          </div>
+
+          <div>
+            <label
+              for="origin"
+              style="font-size: 18px; font-weight: bold; color: black"
+              >Origin
+            </label>
+            <select id="origin" name="origin" [(ngModel)]="origin" required>
+              <option value="Choose">Choose Origin</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Pune">Pune</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Patna">Patna</option>
+              <option value="Nagpur">Nagpur</option>
+              <option value="Amritsar">Amritsar</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Kota">Kota</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Chennai">Chennai</option>
+            </select>
+          </div>
+
+          <div>
+            <label
+              for="destination"
+              style="font-size: 18px; font-weight: bold; color: black"
+              >Destination
+            </label>
+            <select
+              id="destination"
+              name="destination"
+              [(ngModel)]="destination"
+              required
+            >
+              <option value="Choose">Choose Destination</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Pune">Pune</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Patna">Patna</option>
+              <option value="Nagpur">Nagpur</option>
+              <option value="Amritsar">Amritsar</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Kota">Kota</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Chennai">Chennai</option>
+            </select>
+          </div>
+
+          <div style="margin-top: 10px">
+            <label
+              for="Departdate"
+              style="font-size: 18px; font-weight: bold; color: black"
+              >Enter Depart Date and Time
+            </label>
+            <br />
+            <div style="display: flex">
+              <input
+                type="date"
+                id="Departdate"
+                name="Departdate"
+                min="{{minDate | date:'yyyy-MM-dd'}}"
+                style="
+                  font-size: 20px;
+                  border: 4cm;
+                  flex: 1;
+                  padding: 12px 20px;
+                "
+                [(ngModel)]="depDate"
+                required
+              />
+
+              <input
+                type="time"
+                id="departTime"
+                name="departTime"
+                style="
+                  font-size: 20px;
+                  border: 4cm;
+                  margin-left: 10px;
+                  padding: 12px 20px;
+                "
+                [(ngModel)]="depTime"
+                required
+              />
+            </div>
+          </div>
+
+          <div style="margin-top: 10px">
+            <label
+              for="Returndate"
+              style="font-size: 18px; font-weight: bold; color: black"
+              >Enter Arrival Date and Time
+            </label>
+            <div style="display: flex">
+              <input
+                type="date"
+                id="Returndate"
+                name="Returndate"
+                min="{{minDate | date:'yyyy-MM-dd'}}"
+                style="border: 2cm; font-size: 20px; flex: 1"
+                [(ngModel)]="arrDate"
+                required
+              />
+              <input
+                type="time"
+                id="ReturnTime"
+                name="ReturnTime"
+                style="margin-left: 10px; font-size: 20px; border: 4cm"
+                [(ngModel)]="arrTime"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <br /><br />
+      <input type="submit" value="SUBMIT" class="mt-5" />
+    </div>
+  </form>
+</div>

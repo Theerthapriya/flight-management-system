@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="col-md-12">
+    <div class="invoice">
+      <!-- begin invoice-company -->
+      <div class="invoice-company text-inverse f-w-600">
+        
+        Flight Booking Receipt
+        <span class="pull-right hidden-print" style="float:right;">
+          <a
+            onclick="print()"
+            class="btn btn-sm btn-white m-b-10 p-l-5"
+            ><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Export as PDF</a
+          >
+        </span>
+      </div>
+      <!-- end invoice-company -->
+      <!-- begin invoice-header -->
+      <div class="invoice-header">
+        <div class="invoice-from">
+          <address class="m-t-5 m-b-5">
+            <strong class="text-inverse">
+              Passanger Username: {{ bookingData[0]?.username }}
+            </strong>
+          </address>
+        </div>
+        <div class="invoice-to"></div>
+        <div class="invoice-date">
+          <small>Invoice Details</small>
+          <div class="invoice-detail">
+            Booking ID.. {{ bookingData[0]?._id }}<br />
+          </div>
+        </div>
+      </div>
+      <!-- end invoice-header -->
+      <!-- begin invoice-content -->
+      <div class="invoice-content">
+        <!-- begin table-responsive -->
+        <div class="table-responsive">
+          <table class="table table-invoice">
+            <thead>
+              <tr>
+                <th class="text-center" width="20%">PNR</th>
+                <th class="text-center" width="20%">Ticket</th>
+                <th class="text-center" width="20%">Passenger Name</th>
+                <th class="text-center" width="20%">Flight Class</th>
+                <th class="text-center" width="20%">Fare</th>
+                <th class="text-center" width="20%">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let ticket of bookingData;
+                  let indexOfelement = index
+                "
+              >
+              <td class="text-center">{{ ticket.pnr }}</td>
+                <td class="text-center">{{ ticket.ticketNo }}</td>
+                <td class="text-center">{{ ticket.paxName }}</td>
+                <td class="text-center"><span *ngIf="ticket.fare === 3000">Economy</span>
+                  <span *ngIf="ticket.fare === 4000">Premium Economy</span>
+                  <span *ngIf="ticket.fare === 5000">Business Class</span></td>
+                <td class="text-center">{{ ticket.fare }}</td>
+                <td class="text-center">{{ ticket.status }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- end table-responsive -->
+        <!-- begin invoice-price -->
+        <div class="invoice-price">
+          <div class="invoice-price-left">
+            <div class="invoice-price-row"></div>
+          </div>
+          <div class="invoice-price-right">
+            <small>TOTAL</small>
+            <span class="f-w-600">Rs. {{ totalCost }}</span>
+          </div>
+        </div>
+        <!-- end invoice-price -->
+      </div>
+      <!-- end invoice-content -->
+      <!-- begin invoice-note -->
+      <!-- end invoice-note -->
+      <!-- begin invoice-footer -->
+      <div class="invoice-footer">
+        <br><br>
+        <p class="text-center m-b-5 f-w-600">THANK YOU FOR BOOKING</p>
+      </div>
+      <!-- end invoice-footer -->
+    </div>
+  </div>
+</div>
